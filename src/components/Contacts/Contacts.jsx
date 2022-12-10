@@ -1,6 +1,6 @@
 //import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { getContact } from 'redux/selectors';
+import { getContact, getFilter } from 'redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/actions';
 
@@ -45,13 +45,15 @@ text-align: center;
 export const Contacts = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(getContact);
-   
+   const filter = useSelector(getFilter);
+   const normFilter = filter.toLowerCase();
+   const filterContactList = contacts.filter(contact => contact.name.toLowerCase().includes(normFilter));
     return (
-          <List>{contacts.map(({ id, name, number }) => <Item key={id}><Text>{name}: {number}</Text><Button onClick={() =>{dispatch(deleteContact(contacts.id))}}>Delete</Button></Item>)}</List>
+          <List>{filterContactList.map(({ id, name, number }) => <Item key={id}><Text>{name}: {number}</Text><Button onClick={() =>{dispatch(deleteContact(id))}}>Delete</Button></Item>)}</List>
         )
 }
 
 // Contacts.propTypes = {
-//     contacts: PropTypes.arrayOf(PropTypes.object).isRequired,
-//     onDeleteContacts: PropTypes.func.isRequired,
+//     contacts: PropTypes.arrayOf(PropTypes.object),
+    
 // }

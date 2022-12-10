@@ -10,20 +10,9 @@ export const Form = () => {
  const [number, setNumber] = useState('');
 const contacts = useSelector(getContact);
 
-  //const [data, setData] = useState({ userName: '', number: '' });
+
   const dispatch = useDispatch();
 
-//   const handleSubmit = (name,event) => {
-//     event.preventDefault();
-//     const form = event.target;
-//     const allTheName = contacts.map(elem => elem.name.toUpperCase());
-//     if (allTheName.includes(name.toUpperCase())) {
-//       alert(`${name} is already in contacts`);
-//     } else {
-//       dispatch(addContact(form.elements.value))
-      
-//       };
-//     }
 const handleSubmit = (e) => {
     e.preventDefault();
    const correctName = name.toLowerCase();
@@ -51,14 +40,7 @@ const handleSubmit = (e) => {
             console.log('Invalid subscription type');
         }
       };
-//   const handleChange = evt => {
-//     console.log(evt.target.value)
-//     const { value, name } = evt.target;
-//     setData({ ...data, [name]: value });
-//   };
-//   const reset = () => {
-//     setData({ userName: '', number: '' });
-//   };
+
 
   const modelId = nanoid();
   const numberId = nanoid();
