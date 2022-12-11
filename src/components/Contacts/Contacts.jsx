@@ -9,6 +9,7 @@ import { deleteContact } from 'redux/contactsSlice';
 export const Contacts = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(getContact);
+    console.log(contacts)
    const filter = useSelector(getFilter);
    const normFilter = filter.toLowerCase();
    const filterContactList = contacts.filter(contact => contact.name.toLowerCase().includes(normFilter));
